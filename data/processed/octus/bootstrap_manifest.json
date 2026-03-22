@@ -1,0 +1,18 @@
+{
+  "fingerprint": "2871f464039e18cb9e9729642aba121567c03ee98e907088ed2745be154ecc3a",
+  "built_at": "2026-03-22T17:39:23.087831",
+  "settings_subset": {
+    "table_format": "parquet",
+    "chunk_size": 512,
+    "chunk_overlap": 64,
+    "chunkers_to_build": [
+      "heading",
+      "token"
+    ],
+    "mapping_mode": "both",
+    "auto_promote_matched": true,
+    "simfin_mode": "batch",
+    "simfin_periodicity": "both",
+    "vectorstore_provider": "pinecone"
+  }
+}

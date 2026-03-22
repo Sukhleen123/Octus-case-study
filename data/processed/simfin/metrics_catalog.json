@@ -1,0 +1,29 @@
+{
+  "income_statement": [
+    "Revenue",
+    "Cost of Revenue",
+    "Gross Profit",
+    "Operating Income",
+    "Net Income",
+    "EPS Diluted",
+    "EBITDA",
+    "Depreciation & Amortization",
+    "Interest Expense",
+    "Income Tax Expense"
+  ],
+  "balance_sheet": [
+    "Total Assets",
+    "Total Liabilities",
+    "Total Equity",
+    "Cash & Equivalents",
+    "Total Debt",
+    "Net Debt"
+  ],
+  "cash_flow": [
+    "Operating Cash Flow",
+    "Investing Cash Flow",
+    "Financing Cash Flow",
+    "Free Cash Flow",
+    "Capital Expenditures"
+  ]
+}

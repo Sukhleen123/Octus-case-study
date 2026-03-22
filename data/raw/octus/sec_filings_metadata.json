@@ -1,0 +1,1255 @@
+[
+    {
+        "document_id": "6708367fcccc419dfb8b47fd",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241010 161649",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "6708367ecccc41ddfa8b473d",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241010 161649",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "66e0aa73cccc41119b8b52a8",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240910 162010",
+        "company_id": [
+            735475
+        ]
+    },
+    {
+        "document_id": "66e0aa72cccc4152fd8b5499",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240910 162010",
+        "company_id": [
+            735475
+        ]
+    },
+    {
+        "document_id": "66d8c1dbcccc41c0438b526a",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240904 161318",
+        "company_id": [
+            705125
+        ]
+    },
+    {
+        "document_id": "66b664dccccc412a358b566c",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240809 144803",
+        "company_id": [
+            1145725
+        ]
+    },
+    {
+        "document_id": "66b664dccccc4125358b5660",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240809 144803",
+        "company_id": [
+            1145725
+        ]
+    },
+    {
+        "document_id": "66b498b3cccc41f3a48b6bfa",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240807 174538",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "66acaf85cccc41fe308b4601",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240801 180015",
+        "company_id": [
+            1977745
+        ]
+    },
+    {
+        "document_id": "66acaf85cccc41fb308b458a",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240801 180015",
+        "company_id": [
+            1977745
+        ]
+    },
+    {
+        "document_id": "66a8bd20cccc41ddd18b471e",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240730 061121",
+        "company_id": [
+            875219
+        ]
+    },
+    {
+        "document_id": "66a3869fcccc4183918b5161",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240726 071908",
+        "company_id": [
+            694889,
+            694888
+        ]
+    },
+    {
+        "document_id": "66a3869ecccc4187918b518f",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240726 071908",
+        "company_id": [
+            694889,
+            694888
+        ]
+    },
+    {
+        "document_id": "66a382e1cccc4183918b5123",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240726 070307",
+        "company_id": [
+            699940
+        ]
+    },
+    {
+        "document_id": "66a382e0cccc4187918b5150",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240726 070307",
+        "company_id": [
+            699940
+        ]
+    },
+    {
+        "document_id": "66a230eacccc4182918b46f1",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240725 070113",
+        "company_id": [
+            628431,
+            625522
+        ]
+    },
+    {
+        "document_id": "66a230e9cccc417d918b466e",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240725 070113",
+        "company_id": [
+            628431,
+            625522
+        ]
+    },
+    {
+        "document_id": "66a22381cccc4186918b45cb",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240724 192359",
+        "company_id": [
+            788777
+        ]
+    },
+    {
+        "document_id": "66a22304cccc4183918b4579",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240724 192851",
+        "company_id": [
+            788779
+        ]
+    },
+    {
+        "document_id": "66904323cccc41f0de8b565f",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240711 163845",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "66904323cccc4168498b5003",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240711 163845",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "666a037ccccc419fa28b5117",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240612 162041",
+        "company_id": [
+            735475
+        ]
+    },
+    {
+        "document_id": "666a037ccccc419aa28b4e03",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240612 162041",
+        "company_id": [
+            735475
+        ]
+    },
+    {
+        "document_id": "66620407cccc416aee8b4841",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240606 144109",
+        "company_id": [
+            705125
+        ]
+    },
+    {
+        "document_id": "66620407cccc411bee8b4765",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240606 144109",
+        "company_id": [
+            705125
+        ]
+    },
+    {
+        "document_id": "66620406cccc414e928b47e5",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240606 144109",
+        "company_id": [
+            705125
+        ]
+    },
+    {
+        "document_id": "6657971fcccc41b39d8b4619",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240529 165345",
+        "company_id": [
+            1145725
+        ]
+    },
+    {
+        "document_id": "6657971fcccc418d108b4fd3",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240529 165345",
+        "company_id": [
+            1145725
+        ]
+    },
+    {
+        "document_id": "663d36b2cccc41abbd8b4567",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240509 161821",
+        "company_id": [
+            1078158
+        ]
+    },
+    {
+        "document_id": "663c9ffecccc41d7d08b4567",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240508 175305",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "663c9ffecccc41606a8b464e",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240508 175305",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "663c9ffdcccc41576a8b45eb",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240508 175305",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "663c9ffdcccc41526a8b45ee",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240508 175305",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "6634b62acccc4141d08b4569",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240502 180201",
+        "company_id": [
+            1977745
+        ]
+    },
+    {
+        "document_id": "6634b629cccc413fd08b4568",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240502 180201",
+        "company_id": [
+            1977745
+        ]
+    },
+    {
+        "document_id": "662b8b1ecccc41cfdd8b4986",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240426 070428",
+        "company_id": [
+            694889,
+            694888
+        ]
+    },
+    {
+        "document_id": "662b8b1dcccc41d9dd8b48b6",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240426 070428",
+        "company_id": [
+            694889,
+            694888
+        ]
+    },
+    {
+        "document_id": "662b8ad4cccc41dcdd8b486d",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240426 070309",
+        "company_id": [
+            699940
+        ]
+    },
+    {
+        "document_id": "662b8ad4cccc41d6dd8b48c9",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240426 070309",
+        "company_id": [
+            699940
+        ]
+    },
+    {
+        "document_id": "662a3906cccc41b50d8b48fa",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240425 070322",
+        "company_id": [
+            875219
+        ]
+    },
+    {
+        "document_id": "662a3906cccc41b30d8b4838",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240425 070322",
+        "company_id": [
+            875219
+        ]
+    },
+    {
+        "document_id": "662a3905cccc41b70d8b48a8",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240425 070326",
+        "company_id": [
+            628431,
+            625522
+        ]
+    },
+    {
+        "document_id": "662a3905cccc41b20d8b482f",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240425 070326",
+        "company_id": [
+            628431,
+            625522
+        ]
+    },
+    {
+        "document_id": "662a2bd5cccc41b10d8b45fa",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240424 190359",
+        "company_id": [
+            788777
+        ]
+    },
+    {
+        "document_id": "662a2b21cccc41ca0d8b4607",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240424 191345",
+        "company_id": [
+            788779
+        ]
+    },
+    {
+        "document_id": "662a2b21cccc41b10d8b45a7",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240424 191345",
+        "company_id": [
+            788779
+        ]
+    },
+    {
+        "document_id": "6616f4accccc41310b8b47c1",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240410 161739",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "6616f4accccc412d0b8b496b",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240410 161739",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "660c6a9fcccc41e8a98b4aa2",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240402 162009",
+        "company_id": [
+            735475
+        ]
+    },
+    {
+        "document_id": "65fd738ccccc41d17e8b475c",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240322 080118",
+        "company_id": [
+            788714
+        ]
+    },
+    {
+        "document_id": "65ea1941a5f909fd2f8b6350",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240307 143944",
+        "company_id": [
+            705125
+        ]
+    },
+    {
+        "document_id": "65ea1940a5f909f92f8b62a7",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240307 143944",
+        "company_id": [
+            705125
+        ]
+    },
+    {
+        "document_id": "65e0f901a5f9092a608bcf4b",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240229 161241",
+        "company_id": [
+            1078158
+        ]
+    },
+    {
+        "document_id": "65e06feaa5f9093c358b7d13",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240228 202704",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "65e06fe8a5f909781c8b8aa4",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240228 202704",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "65d88e1ca5f9092c608b7688",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240222 180122",
+        "company_id": [
+            1977745
+        ]
+    },
+    {
+        "document_id": "65d88e1ca5f90909268b628e",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240222 180122",
+        "company_id": [
+            1977745
+        ]
+    },
+    {
+        "document_id": "65d5f501a5f90934608b5407",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240221 075946",
+        "company_id": [
+            628431,
+            625522
+        ]
+    },
+    {
+        "document_id": "65ca973ca5f909db478b73c2",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240212 170429",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "65ca973ca5f90961238b67fc",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240212 170429",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "65ca0bc9a5f909df478b6a94",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240212 063456",
+        "company_id": [
+            875219
+        ]
+    },
+    {
+        "document_id": "65c60707a5f909db478b6368",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20240208 213616",
+        "company_id": [
+            1145725
+        ]
+    },
+    {
+        "document_id": "65c363e2a5f909e5478b5170",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240206 193622",
+        "company_id": [
+            788779
+        ]
+    },
+    {
+        "document_id": "65c363e1a5f909e1478b4fee",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240206 193622",
+        "company_id": [
+            788779
+        ]
+    },
+    {
+        "document_id": "65c363e1a5f909d0478b50f8",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240206 193355",
+        "company_id": [
+            788777
+        ]
+    },
+    {
+        "document_id": "65bcddf4a5f90983088b5bfa",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240202 071302",
+        "company_id": [
+            694889,
+            694888
+        ]
+    },
+    {
+        "document_id": "65bcddf4a5f9094e658b52b3",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240202 071302",
+        "company_id": [
+            694889,
+            694888
+        ]
+    },
+    {
+        "document_id": "65bcdb9fa5f9097f088b5daf",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240202 070303",
+        "company_id": [
+            699940
+        ]
+    },
+    {
+        "document_id": "65bcdb9ea5f90999418b45f6",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20240202 070303",
+        "company_id": [
+            699940
+        ]
+    },
+    {
+        "document_id": "f3728e0a-bb59-48c8-aa24-f6da1b810b46",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241024 070140",
+        "company_id": [
+            628431,
+            625522
+        ]
+    },
+    {
+        "document_id": "fef898b5-742b-4898-83cc-b4571932a79b",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241024 070140",
+        "company_id": [
+            628431,
+            625522
+        ]
+    },
+    {
+        "document_id": "555454569e71b69a3ff00d64ed648c36",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241028 192751",
+        "company_id": [
+            788779
+        ]
+    },
+    {
+        "document_id": "a683ce04bfdf665f14fd52ab07ea83ee",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241028 192449",
+        "company_id": [
+            788777
+        ]
+    },
+    {
+        "document_id": "b335cee4182609451fbdf0652a1f8aff",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241029 071417",
+        "company_id": [
+            875219
+        ]
+    },
+    {
+        "document_id": "18a3ba9bf1a6e9ddfb0cce34d596c2fc",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241101 070501",
+        "company_id": [
+            699940
+        ]
+    },
+    {
+        "document_id": "7ad12849d3d4b4873dbe238784b44985",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241101 070829",
+        "company_id": [
+            694889,
+            694888
+        ]
+    },
+    {
+        "document_id": "b997cd86891d40561924e0e19aef688a",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241106 174008",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "ef165715f9e540670fac3a6c08ab2be0",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241107 180049",
+        "company_id": [
+            1977745
+        ]
+    },
+    {
+        "document_id": "94312e358c61b2c5cca3f792dc5b70a7",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241108 162028",
+        "company_id": [
+            1145725
+        ]
+    },
+    {
+        "document_id": "ecac2e5b6a1dca3458a7aef185929b9b",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20241210 164620",
+        "company_id": [
+            735475
+        ]
+    },
+    {
+        "document_id": "c2e3e417f0658c628abe16a577b845f6",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20241220 151713",
+        "company_id": [
+            705125
+        ]
+    },
+    {
+        "document_id": "dfc524ed221b98f2c95677f34e757c2c",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20250131 070228",
+        "company_id": [
+            699940
+        ]
+    },
+    {
+        "document_id": "83d853015dac8e2162531e849ff130b4",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20250131 071248",
+        "company_id": [
+            694889,
+            694888
+        ]
+    },
+    {
+        "document_id": "fc59226457bac90968ffe399ca5788bd",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20250205 204408",
+        "company_id": [
+            788777
+        ]
+    },
+    {
+        "document_id": "86024d834ed5b6ba64b6ae81bb75458b",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20250205 204739",
+        "company_id": [
+            788779
+        ]
+    },
+    {
+        "document_id": "4f39a028003757b6881dde3cfcea23b8",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250210 155330",
+        "company_id": [
+            1145725
+        ]
+    },
+    {
+        "document_id": "54a1d98288c14a34d687392221242747",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20250211 170224",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "5908122e664481ceb991b609b10abdaa",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20250214 070315",
+        "company_id": [
+            875219
+        ]
+    },
+    {
+        "document_id": "674247fc02d4db7eb5b8eb63065c020b",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20250219 163555",
+        "company_id": [
+            628431,
+            625522
+        ]
+    },
+    {
+        "document_id": "1ef9266d06a2e251c352cc3cef37f959",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20250225 205031",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "a85540e66cc968782cb8e6cfb3808aab",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20250227 180104",
+        "company_id": [
+            1977745
+        ]
+    },
+    {
+        "document_id": "3e7bd37265f5b2ed209dfb76d2aa2e41",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250312 141309",
+        "company_id": [
+            705125
+        ]
+    },
+    {
+        "document_id": "074809ee3047165ee064304903162a91",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20250324 080324",
+        "company_id": [
+            788714
+        ]
+    },
+    {
+        "document_id": "a4d81d770654910d109576fb6fd8c58a",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20250407 161159",
+        "company_id": [
+            735475
+        ]
+    },
+    {
+        "document_id": "cf44a1252bc59ec829dd6024400ac6d2",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250409 162048",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "1784b5a1c6e9b11bef39b32f04f8b509",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250425 070152",
+        "company_id": [
+            699940
+        ]
+    },
+    {
+        "document_id": "282874276dd27c3393f82c1637727634",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250425 070305",
+        "company_id": [
+            694889,
+            694888
+        ]
+    },
+    {
+        "document_id": "03dd404e18c45a5837899a5736658ed9",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250429 070529",
+        "company_id": [
+            875219
+        ]
+    },
+    {
+        "document_id": "4aeb3ad74cc2a6bcbc49a91f7661076f",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250430 173358",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "013477a779ec48ad468061b7d935a8cd",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250501 180058",
+        "company_id": [
+            1977745
+        ]
+    },
+    {
+        "document_id": "372d5514497fe7dc06b46e5474c700ac",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250505 193426",
+        "company_id": [
+            788779
+        ]
+    },
+    {
+        "document_id": "ebb26450054690c0b565fdcf9744fa3a",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250505 193109",
+        "company_id": [
+            788777
+        ]
+    },
+    {
+        "document_id": "7945218652b014c5b7f0ca6c6a47dc96",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20250523 173310",
+        "company_id": [
+            1145725
+        ]
+    },
+    {
+        "document_id": "603fc7e2f4d9c6fafe67ae01da242de9",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250605 144116",
+        "company_id": [
+            705125
+        ]
+    },
+    {
+        "document_id": "c776cd047317082cff9922350b3df8a0",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250610 161159",
+        "company_id": [
+            735475
+        ]
+    },
+    {
+        "document_id": "cf18884a009d5b66b86f7ccde19fd582",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250710 172437",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "4debf8a0b7a830c8b0eced4c0c4f904f",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250725 070151",
+        "company_id": [
+            699940
+        ]
+    },
+    {
+        "document_id": "002cad46560e546536848717ecd7bb1e",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250725 070253",
+        "company_id": [
+            694889,
+            694888
+        ]
+    },
+    {
+        "document_id": "102ac52e94320a64f3356bbad9b81f4f",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250729 070826",
+        "company_id": [
+            875219
+        ]
+    },
+    {
+        "document_id": "38e2b00acc9352c18636ae6d054e9121",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250730 192339",
+        "company_id": [
+            788777
+        ]
+    },
+    {
+        "document_id": "a5586e8e88f4be1be16ea35b20af6d11",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250730 192752",
+        "company_id": [
+            788779
+        ]
+    },
+    {
+        "document_id": "b0bff91267ef4ebb7a507ece772ba07d",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250731 180036",
+        "company_id": [
+            1977745
+        ]
+    },
+    {
+        "document_id": "1be6e991381a2bb8228af70dfcb71d5c",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250804 072040",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "dd68cc2207bb01f29c2236e676d4b66a",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250807 190443",
+        "company_id": [
+            1145725
+        ]
+    },
+    {
+        "document_id": "c336369343804d021f7d39ff9d9cc15c",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250904 160556",
+        "company_id": [
+            705125
+        ]
+    },
+    {
+        "document_id": "4a42e3f06de7aa4fed30f2de0add6d6d",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20250915 162356",
+        "company_id": [
+            735475
+        ]
+    },
+    {
+        "document_id": "506ac800c976fbd8fd5083bfc741afb2",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20251009 162027",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "37ab9bd4ac09a58cbc437d181a09ead6",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20251023 191204",
+        "company_id": [
+            788777
+        ]
+    },
+    {
+        "document_id": "f2d90b1134fb818272cd67cf698d0899",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20251023 192007",
+        "company_id": [
+            788779
+        ]
+    },
+    {
+        "document_id": "7b450eaf008e0d4cbfa103b1381b57d6",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20251028 071332",
+        "company_id": [
+            875219
+        ]
+    },
+    {
+        "document_id": "fff8b1ecddc51c4aac84c668108057fa",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20251029 173646",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "42d853956133875292a3087802b474fa",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20251031 070132",
+        "company_id": [
+            699940
+        ]
+    },
+    {
+        "document_id": "2a0c5318dc3db79e01f7e4eccee01cb9",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20251031 070219",
+        "company_id": [
+            694889,
+            694888
+        ]
+    },
+    {
+        "document_id": "ba90a4d43d7ee6fbb867f76e689f0159",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20251106 175959",
+        "company_id": [
+            1977745
+        ]
+    },
+    {
+        "document_id": "0c903c15ad096c84ae18681fafc4d661",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20251107 204615",
+        "company_id": [
+            1145725
+        ]
+    },
+    {
+        "document_id": "925e88aa598f0e3fa149b46aa35a3eff",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20251209 161328",
+        "company_id": [
+            735475
+        ]
+    },
+    {
+        "document_id": "f281f7181154a6409a7842145267d3f6",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20251212 134226",
+        "company_id": [
+            705125
+        ]
+    },
+    {
+        "document_id": "3ebba4a5da10f8bd203cbc9b99cdc58e",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20260130 070150",
+        "company_id": [
+            699940
+        ]
+    },
+    {
+        "document_id": "16954fc3bb6a9975f30c868bc697a60e",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20260130 070256",
+        "company_id": [
+            694889,
+            694888
+        ]
+    },
+    {
+        "document_id": "987591aca1292d1cabef6268d1def07a",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20260206 172017",
+        "company_id": [
+            1145725
+        ]
+    },
+    {
+        "document_id": "c2ca5565ed950d3a1241a0270b3e4ca1",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20260210 174803",
+        "company_id": [
+            742214
+        ]
+    },
+    {
+        "document_id": "e23da2a78d7fff650184b3a0693c0cf7",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20260210 191516",
+        "company_id": [
+            788779
+        ]
+    },
+    {
+        "document_id": "5608984d1a59c77cb54fe0320d850ebf",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20260210 190837",
+        "company_id": [
+            788777
+        ]
+    },
+    {
+        "document_id": "3b3ac17642b67e1370fd2d4bcd602c0e",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20260212 164516",
+        "company_id": [
+            875219
+        ]
+    },
+    {
+        "document_id": "d6a74f67d419c49ad9fcaab05093b333",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20260225 192616",
+        "company_id": [
+            716030
+        ]
+    },
+    {
+        "document_id": "9d7a69b758443e44a4473545a5841abe",
+        "source_type": "SEC Filing",
+        "document_type": "10-K",
+        "document_date": "20260226 171056",
+        "company_id": [
+            1977745
+        ]
+    },
+    {
+        "document_id": "6ade56f3c4d095b16faf18223b15cf1a",
+        "source_type": "SEC Filing",
+        "document_type": "10-Q",
+        "document_date": "20260305 160151",
+        "company_id": [
+            705125
+        ]
+    }
+]

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import json; f = json.load\\(open\\(''/c/Users/sukhl/Octus-case-study/data/raw/octus/transcripts.json''\\)\\); print\\(json.dumps\\(f[0], indent=2\\)\\)\")"
+    ]
+  }
+}

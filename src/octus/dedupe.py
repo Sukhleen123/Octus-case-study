@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any
 
 
-def _dedupe_key(record: dict[str, Any]) -> tuple:
+def dedupe_key(record: dict[str, Any]) -> tuple:
     """Build the deduplication key for a SEC filing record."""
     company_ids = record.get("company_id", [])
     # Normalize to sorted tuple for consistent keying
@@ -40,7 +40,7 @@ def dedupe_sec_filings(
     duplicates: list[dict[str, Any]] = []
 
     for record in records:
-        key = _dedupe_key(record)
+        key = dedupe_key(record)
         if key not in seen:
             seen[key] = record
             canonical.append(record)

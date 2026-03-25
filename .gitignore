@@ -210,3 +210,7 @@ __marimo__/
 # data
 data/eval
 data/cache
+data/raw
+
+# claude
+.claude/

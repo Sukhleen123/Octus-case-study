@@ -58,8 +58,8 @@ def load_context(settings: Settings) -> AppContext:
         text_store=MetadataStore(cache_dir / "sec_filings_text_store.sqlite"),
     )
 
-    transcript_retriever = _make_retriever(settings, transcript_store, embedder)
-    sec_retriever = _make_retriever(settings, sec_store, embedder)
+    transcript_retriever = make_retriever(settings, transcript_store, embedder)
+    sec_retriever = make_retriever(settings, sec_store, embedder)
 
     retriever = MultiStoreRetriever(
         transcript_retriever=transcript_retriever,
@@ -68,7 +68,7 @@ def load_context(settings: Settings) -> AppContext:
     )
 
     company_map = _load_company_map(settings)
-    llm_client = _make_llm_client(settings)
+    llm_client = make_llm_client(settings)
 
     # Initialize runtime singletons so node functions can import them directly
     runtime.init(retriever, llm_client, company_map)
@@ -84,7 +84,7 @@ def load_context(settings: Settings) -> AppContext:
     return AppContext(retriever=retriever, graph=graph)
 
 
-def _make_retriever(settings: Settings, store: Any, embedder: Any) -> Any:
+def make_retriever(settings: Settings, store: Any, embedder: Any) -> Any:
     from src.retrieval.dense import DenseRetriever
     from src.retrieval.dense_mmr import DenseMMRRetriever
 
@@ -109,7 +109,7 @@ def _load_company_map(settings: Settings) -> Any:
     return None
 
 
-def _make_llm_client(settings: Settings) -> Any:
+def make_llm_client(settings: Settings) -> Any:
     if settings.llm_provider == "anthropic" and settings.anthropic_api_key:
         import anthropic
         return anthropic.Anthropic(api_key=settings.anthropic_api_key)

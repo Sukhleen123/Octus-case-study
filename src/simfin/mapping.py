@@ -20,7 +20,7 @@ from typing import Any
 
 import pandas as pd
 
-from src.simfin.storage import read_table, write_table
+from src.simfin.storage import write_table
 
 logger = logging.getLogger(__name__)
 

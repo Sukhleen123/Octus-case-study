@@ -21,12 +21,20 @@ from typing import Any
 import tiktoken
 
 from src.chunking.base import BaseChunker, ChunkRecord
-from src.chunking.heading_chunker import _HEADING_RE
 
 _DEFAULT_ENCODING = "cl100k_base"
 
 # Sentence boundary regex: split on ". ", "? ", "! " followed by uppercase
 _SENTENCE_RE = re.compile(r"(?<=[.!?])\s+(?=[A-Z])")
+
+_HEADING_RE = re.compile(
+    r"^(?:"
+    r"#{1,6}\s+(?P<md_title>.+)"         # Markdown ## headings
+    r"|"
+    r"(?P<html_title>[A-Z][A-Z\s,.\-&]{3,60})$"  # ALL-CAPS heading (common in SEC filings)
+    r")$",
+    re.MULTILINE,
+)
 
 
 class RecursiveChunker(BaseChunker):
@@ -59,24 +67,24 @@ class RecursiveChunker(BaseChunker):
         self.overlap = overlap
         self._enc = tiktoken.get_encoding(_DEFAULT_ENCODING)
 
-    def _count_tokens(self, text: str) -> int:
+    def count_tokens(self, text: str) -> int:
         return len(self._enc.encode(text))
 
-    def _detect_heading(self, text: str) -> str:
+    def detect_heading(self, text: str) -> str:
         """Return the first heading found in text, or empty string."""
         m = _HEADING_RE.search(text)
         if m:
             return (m.group("md_title") or m.group("html_title") or "").strip()
         return ""
 
-    def _split_sentences(self, text: str) -> list[str]:
+    def split_sentences(self, text: str) -> list[str]:
         """Split text on sentence boundaries."""
         parts = _SENTENCE_RE.split(text)
         return [p.strip() for p in parts if p.strip()]
 
-    def _sub_split(self, text: str) -> list[str]:
+    def sub_split(self, text: str) -> list[str]:
         """Split an oversized paragraph into target_size chunks with overlap."""
-        sentences = self._split_sentences(text)
+        sentences = self.split_sentences(text)
         if not sentences:
             # Fall back to token-window
             tokens = self._enc.encode(text)
@@ -95,14 +103,14 @@ class RecursiveChunker(BaseChunker):
         current_tokens = 0
 
         for sent in sentences:
-            sent_tokens = self._count_tokens(sent)
+            sent_tokens = self.count_tokens(sent)
             if current_tokens + sent_tokens > self.target_size and current:
                 chunks.append(" ".join(current))
                 # Keep overlap: take sentences from the end of current
                 overlap_sentences: list[str] = []
                 overlap_tokens = 0
                 for s in reversed(current):
-                    st = self._count_tokens(s)
+                    st = self.count_tokens(s)
                     if overlap_tokens + st > self.overlap:
                         break
                     overlap_sentences.insert(0, s)
@@ -134,11 +142,11 @@ class RecursiveChunker(BaseChunker):
 
         for para in paragraphs:
             # Check if paragraph starts with a heading
-            heading = self._detect_heading(para)
+            heading = self.detect_heading(para)
             if heading:
                 current_heading = heading
 
-            para_tokens = self._count_tokens(para)
+            para_tokens = self.count_tokens(para)
 
             if para_tokens > self.target_size:
                 # Flush current buffer first
@@ -148,7 +156,7 @@ class RecursiveChunker(BaseChunker):
                     current_tokens = 0
 
                 # Sub-split the oversized paragraph
-                sub_chunks = self._sub_split(para)
+                sub_chunks = self.sub_split(para)
                 for sc in sub_chunks:
                     merged_chunks.append((current_heading, sc))
             elif current_tokens + para_tokens > self.target_size and current_parts:

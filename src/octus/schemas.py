@@ -47,7 +47,7 @@ class OctusDocument(BaseModel):
     """
     Unified normalized representation written to documents.{parquet|csv}.
 
-    company_ids is stored as a JSON string for compatibility with Parquet/CSV
+    company_ids is stored as a JSON string for compatibility with Parquet
     (pyarrow does not handle list[int] columns cleanly in all scenarios).
     """
     doc_source: str             # "transcript" | "sec_filing"

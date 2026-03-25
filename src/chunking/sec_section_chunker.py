@@ -238,11 +238,6 @@ class SECSectionChunker(BaseChunker):
         self._enc = tiktoken.get_encoding(_DEFAULT_ENCODING)
 
     def chunk(self, doc: dict[str, Any]) -> list[ChunkRecord]:
-        # For transcripts, fall back to heading chunker
-        if doc.get("doc_source") == "transcript":
-            from src.chunking.heading_chunker import HeadingChunker
-            return HeadingChunker().chunk(doc)
-
         # For SEC filings, try to read raw HTML for structure-aware extraction
         raw_path = doc.get("raw_path", "")
         if raw_path and Path(raw_path).exists():
@@ -266,7 +261,7 @@ class SECSectionChunker(BaseChunker):
             tokens = self._enc.encode(section_text)
 
             if len(tokens) <= self.max_section_tokens:
-                chunks.append(self._make_record(
+                chunks.append(self.make_record(
                     doc, normalized_title, section_text, chunk_index, text,
                 ))
                 chunk_index += 1
@@ -279,7 +274,7 @@ class SECSectionChunker(BaseChunker):
                     window = tokens[i: i + self.max_section_tokens]
                     chunk_text = self._enc.decode(window)
                     sub_title = f"{normalized_title} (part {sub_idx + 1})" if normalized_title else ""
-                    chunks.append(self._make_record(
+                    chunks.append(self.make_record(
                         doc, sub_title, chunk_text, chunk_index, text,
                     ))
                     chunk_index += 1
@@ -288,7 +283,7 @@ class SECSectionChunker(BaseChunker):
 
         return chunks
 
-    def _make_record(
+    def make_record(
         self,
         doc: dict[str, Any],
         title: str,

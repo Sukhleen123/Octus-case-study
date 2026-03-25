@@ -44,15 +44,10 @@ def get_embedder(settings: "Settings") -> BaseEmbedder:
     Factory: return the appropriate embedder based on settings.embedding_provider.
 
     Providers:
-      "mock"                 — deterministic random vectors, no API key needed
       "sentence_transformers"— local HuggingFace model (e.g. intfloat/e5-base-v2)
       "openai"               — OpenAI embeddings API
     """
     provider = settings.embedding_provider
-
-    if provider == "mock":
-        from src.embeddings.mock_embedder import MockEmbedder
-        return MockEmbedder(dim=settings.embedding_dim)
 
     if provider == "sentence_transformers":
         from src.embeddings.sentence_transformer_embedder import SentenceTransformerEmbedder
@@ -74,5 +69,5 @@ def get_embedder(settings: "Settings") -> BaseEmbedder:
 
     raise ValueError(
         f"Unsupported embedding_provider: {provider!r}. "
-        "Allowed: 'mock', 'sentence_transformers', 'openai'."
+        "Allowed: 'sentence_transformers', 'openai'."
     )

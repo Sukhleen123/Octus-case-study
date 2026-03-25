@@ -61,8 +61,8 @@ class Settings(BaseSettings):
     pinecone_sec_namespace: str = Field(default="sec_filings")
 
     # ── Embeddings ─────────────────────────────────────────────────────────────
-    embedding_provider: Literal["mock", "sentence_transformers", "openai", "anthropic"] = Field(
-        default="mock"
+    embedding_provider: Literal["sentence_transformers", "openai", "anthropic"] = Field(
+        default="sentence_transformers"
     )
     embedding_model: str = Field(default="")
     embedding_dim: int = Field(default=768)

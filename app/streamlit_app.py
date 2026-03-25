@@ -66,17 +66,17 @@ for msg in st.session_state.messages:
                     st.json(event)
 
 _NODE_LABELS = {
-    "router":       lambda _: "Routing query…",
+    "router":       lambda _: "(Routing Node) Routing query…",
     "doc_agent":    lambda s: (
-        "Retrieving documents for "
+        "(Document Agent) Retrieving documents for "
         + (", ".join(s.get("companies") or ["your query"]) + "…")
     ),
     "simfin_agent": lambda s: (
-        "Fetching financial data"
+        "(Simfin Agent) Fetching financial data"
         + (f" for {', '.join(s['tickers'])}" if s.get("tickers") else "")
         + "…"
     ),
-    "synthesize":   lambda _: "Synthesizing answer…",
+    "synthesize":   lambda _: "(Synthesis Agent) Synthesizing answer…",
 }
 
 if prompt := st.chat_input("Ask about financials, earnings, filings..."):

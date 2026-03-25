@@ -90,11 +90,7 @@ def build_company_map(settings: Any) -> pd.DataFrame:
     from rapidfuzz import fuzz, process
 
     raw_dir = Path(settings.octus_raw_dir)
-    out_dir = Path(
-        settings.simfin_processed_path
-        if hasattr(settings, "simfin_processed_path")
-        else Path(settings.processed_dir) / "simfin"
-    )
+    out_dir = Path(settings.simfin_processed_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     fmt = settings.table_format
 
@@ -165,9 +161,49 @@ def build_company_map(settings: Any) -> pd.DataFrame:
             })
 
     mapping_df = pd.DataFrame(rows)
+    mapping_df = _apply_manual_overrides(mapping_df)
     out_path = out_dir / f"company_map.{fmt}"
     write_table(mapping_df, out_path, fmt)
     logger.info("Company map written to %s (%d rows)", out_path, len(mapping_df))
+    return mapping_df
+
+
+_MANUAL_MAPPINGS_PATH = Path("configs/manual_mappings.yaml")
+
+
+def _apply_manual_overrides(mapping_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Apply manual ticker overrides from configs/manual_mappings.yaml.
+
+    Overrides are keyed by the exact company_name from company_metadata.json.
+    They take precedence over fuzzy-matched results and set status to "confirmed".
+    """
+    if not _MANUAL_MAPPINGS_PATH.exists():
+        return mapping_df
+
+    import yaml
+
+    with _MANUAL_MAPPINGS_PATH.open() as f:
+        config = yaml.safe_load(f) or {}
+
+    overrides = config.get("manual_mappings", {})
+    if not overrides:
+        return mapping_df
+
+    for company_name, override in overrides.items():
+        mask = mapping_df["company_name"] == company_name
+        if not mask.any():
+            logger.warning("Manual override for '%s' — no matching row found", company_name)
+            continue
+        ticker = override.get("ticker", "")
+        status = override.get("status", "confirmed")
+        mapping_df.loc[mask, "suggested_ticker"] = ticker
+        mapping_df.loc[mask, "status"] = status
+        logger.info(
+            "Manual override applied: '%s' → ticker=%s, status=%s",
+            company_name, ticker, status,
+        )
+
     return mapping_df
 
 

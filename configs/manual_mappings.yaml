@@ -1,0 +1,11 @@
+# Manual ticker overrides for companies that don't fuzzy-match well.
+#
+# Use this file when a company's name in Octus raw data differs significantly
+# from its SimFin listing (e.g. brand names, subsidiaries, renames).
+#
+# Keys must exactly match the company_name field in data/raw/octus/company_metadata.json.
+
+manual_mappings:
+  "Optimum Communications, Inc.":
+    ticker: "OPTU"
+    status: "confirmed"

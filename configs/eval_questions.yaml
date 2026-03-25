@@ -1,0 +1,109 @@
+# Evaluation questions for RAG pipeline comparison.
+# Derived from the case study document example questions.
+# Categories: financial_data, sec_filing, transcript, comparative, sector_overview, discovery
+
+questions:
+  - id: q01
+    text: "Collate all financial earnings data (Revenue, Net Income, EPS) for Delta Air Lines across the last 4 quarters in a table."
+    category: financial_data
+    requires_simfin: true
+    requires_docs: false
+    expected_companies: ["Delta Air Lines"]
+
+  - id: q02
+    text: "Summarize the most recent 10-Q management commentary for Ford Motor, specifically highlighting Forward-Looking Statements."
+    category: sec_filing
+    requires_simfin: false
+    requires_docs: true
+    expected_companies: ["Ford Motor"]
+
+  - id: q03
+    text: "What are the common trends or risks seen across recent earnings disclosures for the Passenger Airlines sector?"
+    category: sector_overview
+    requires_simfin: true
+    requires_docs: true
+    expected_companies: []
+
+  - id: q04
+    text: "Compare JetBlue to Delta Air Lines based on their growth strategy."
+    category: comparative
+    requires_simfin: true
+    requires_docs: true
+    expected_companies: ["JetBlue", "Delta Air Lines"]
+
+  - id: q05
+    text: "List all companies currently in the database along with high-level metrics such as CEO, Sector, and most recent Annual Revenue."
+    category: discovery
+    requires_simfin: true
+    requires_docs: true
+    expected_companies: []
+
+  - id: q06
+    text: "Summarize recent developments on American Airlines and explain how they align with the financial risks listed in their latest SEC filing."
+    category: sec_filing
+    requires_simfin: true
+    requires_docs: true
+    expected_companies: ["American Airlines Group"]
+
+  - id: q07
+    text: "What was Delta Air Lines' revenue trend over the past 3 fiscal years?"
+    category: financial_data
+    requires_simfin: true
+    requires_docs: false
+    expected_companies: ["Delta Air Lines"]
+
+  - id: q08
+    text: "What did Ford Motor's CEO say about EV strategy in their most recent earnings call?"
+    category: transcript
+    requires_simfin: false
+    requires_docs: true
+    expected_companies: ["Ford Motor"]
+
+  - id: q09
+    text: "Compare the debt-to-equity ratios of Rivian and Lucid Group."
+    category: comparative
+    requires_simfin: true
+    requires_docs: false
+    expected_companies: ["Rivian Automotive Inc.", "Lucid Group, Inc."]
+
+  - id: q10
+    text: "What are the key risk factors mentioned in Charter Communications' most recent 10-K filing?"
+    category: sec_filing
+    requires_simfin: false
+    requires_docs: true
+    expected_companies: ["Charter Communications"]
+
+  - id: q11
+    text: "How has Six Flags' operating income changed quarter over quarter?"
+    category: financial_data
+    requires_simfin: true
+    requires_docs: false
+    expected_companies: ["Six Flags Entertainment Corporation"]
+
+  - id: q12
+    text: "What forward-looking guidance did JetBlue provide in their latest earnings call?"
+    category: transcript
+    requires_simfin: false
+    requires_docs: true
+    expected_companies: ["JetBlue"]
+
+  - id: q13
+    text: "Perform a trend analysis on recent 10-K reports for Ford Motor."
+    category: sec_filing
+    requires_simfin: true
+    requires_docs: true
+    expected_companies: ["Ford Motor"]
+
+  - id: q14
+    text: "What are the major capital expenditure plans discussed across the Automobile Manufacturers sector?"
+    category: sector_overview
+    requires_simfin: true
+    requires_docs: true
+    expected_companies: []
+
+  - id: q15
+    text: "Summarize Ciena Corp's cash flow position based on their latest financial statements and earnings commentary."
+    category: financial_data
+    requires_simfin: true
+    requires_docs: true
+    expected_companies: ["Ciena Corp."]

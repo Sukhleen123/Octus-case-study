@@ -171,10 +171,16 @@ def build_company_map(settings: Any) -> pd.DataFrame:
 
 
 # Companies whose Octus name doesn't fuzzy-match their SimFin listing well enough
-# (score < 90). Key = exact company_name from data/raw/octus/company_metadata.json.
+# (score < 90) Or they just get matched wrong. Key = exact company_name from data/raw/octus/company_metadata.json.
 _MANUAL_TICKER_OVERRIDES: dict[str, dict] = {
     "Optimum Communications, Inc.": {"ticker": "OPTU", "status": "confirmed"},
     "Dave & Buster's": {"ticker": "PLAY", "status": "confirmed"},
+    "Vistance Networks Inc.": {"ticker": "VISN", "status": "confirmed"},
+    "Rivian Automotive, Inc.": {"ticker": "RIVN", "status": "confirmed"},
+    "Lucid Group, Inc.": {"ticker": "LCID", "status": "confirmed"},
+    "Ciena Corp.": {"ticker": "CIEN", "status": "confirmed"},
+    "Cable One, Inc.": {"ticker": "CABO", "status": "confirmed"},
+    "Life Time Fitness": {"ticker": "LTH", "status": "confirmed"},
     
 }
 

@@ -67,6 +67,35 @@ def mock_answer(query: str, chunks: list[dict], tables: list) -> str:
     return "\n".join(parts)
 
 
+def _build_company_directory(query: str, all_companies_mode: bool) -> str:
+    """Return a markdown table of company → sub_industry for injection into the prompt.
+
+    Only built when the query asks about sectors/industries or covers all companies.
+    Returns "" if not needed or if sub_industry data is unavailable.
+    """
+    needs_sector = all_companies_mode or bool(re.search(r"\bsector\b|\bindustr", query, re.IGNORECASE))
+    if not needs_sector or runtime.company_map is None:
+        return ""
+    try:
+        import pandas as pd
+
+        df = runtime.company_map
+        if not isinstance(df, pd.DataFrame) or "sub_industry" not in df.columns:
+            return ""
+        rows = (
+            df[["company_name", "sub_industry"]]
+            .dropna(subset=["company_name"])
+            .drop_duplicates("company_name")
+        )
+        lines = ["| Company | Sector/Industry |", "|---------|----------------|"]
+        for _, r in rows.iterrows():
+            si = r.get("sub_industry") or "N/A"
+            lines.append(f"| {r['company_name']} | {si} |")
+        return "\n".join(lines)
+    except Exception:
+        return ""
+
+
 def llm_answer(
     query: str,
     ordered: list[OctusCitation | SimFinCitation],
@@ -74,6 +103,7 @@ def llm_answer(
     llm_client: Any,
     model: str,
     all_companies: list[str] | None = None,
+    company_directory: str = "",
 ) -> tuple[str, set[int]]:
     """Call Claude with numbered citations; return (answer_text, used_ref_numbers)."""
     companies_note = ""
@@ -83,6 +113,13 @@ def llm_answer(
             "For any company that has no sources listed below, include it in your answer "
             "with a note that no data is available for that company:\n"
             + ", ".join(all_companies) + "\n\n"
+        )
+
+    directory_section = ""
+    if company_directory:
+        directory_section = (
+            "Company Reference (sector/industry lookup — do not cite with [N]):\n"
+            + company_directory + "\n\n"
         )
 
     prompt = (
@@ -99,6 +136,7 @@ def llm_answer(
         "with the [N] reference at the end of the block.\n"
         "4. If multiple sources support one claim, cite together: [1][2].\n\n"
         + companies_note
+        + directory_section
         + f"Question: {query}\n\n"
         f"Sources:\n{context}\n\n"
         "Answer:"
@@ -135,9 +173,11 @@ def synthesize_node(state: AgentState) -> dict:
     if runtime.llm_client is not None:
         ordered, context = build_context(octus_cites, simfin_cites)
         all_companies = state.companies if state.all_companies_mode else None
+        company_directory = _build_company_directory(state.query, state.all_companies_mode)
         answer, used_refs = llm_answer(
             state.query, ordered, context, runtime.llm_client, runtime.settings.llm_model,
             all_companies=all_companies,
+            company_directory=company_directory,
         )
         for ref, cit in enumerate(ordered, 1):
             if ref in used_refs:

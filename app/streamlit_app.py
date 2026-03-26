@@ -18,13 +18,20 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import streamlit as st
 from langchain_core.messages import HumanMessage
 
+import logging
+import sys
+
 from src.app.loader import load_context
-from src.app.logging import configure_logging
 from src.app.settings import Settings
 from src.agents.state import AgentState
 from src.citations.formatter import format_citations_from_dicts
 
-configure_logging()
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
+    datefmt="%H:%M:%S",
+    stream=sys.stdout,
+)
 
 st.set_page_config(
     page_title="Octus Financial Intelligence",

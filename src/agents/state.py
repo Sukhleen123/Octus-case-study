@@ -33,6 +33,7 @@ class AgentState(BaseModel):
     tickers: list[str] = Field(default_factory=list)
     doc_filters: dict = Field(default_factory=dict)
     doc_query: str = ""
+    all_companies_mode: bool = False
 
     # ── Set by doc_agent_node ─────────────────────────────────────────────────
     doc_result: tuple = Field(default=([], [], []))

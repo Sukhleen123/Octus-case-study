@@ -17,11 +17,18 @@ Usage:
 from __future__ import annotations
 
 import logging
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from src.app.context import AppContext
 from src.app.settings import Settings
+
+
+@dataclass
+class AppContext:
+    """Runtime objects returned by load_context() and cached by the Streamlit app."""
+    retriever: Any   # MultiStoreRetriever (Pinecone-backed)
+    graph: Any       # compiled LangGraph StateGraph
 
 logger = logging.getLogger(__name__)
 

@@ -24,6 +24,15 @@ OCTUS_KEYWORDS = {
     "10-k", "10-q", "annual report", "quarterly report",
 }
 
+ALL_COMPANIES_TRIGGERS = re.compile(
+    r"all\s+companies"
+    r"|every\s+company"
+    r"|list\s+(all|every|each)\s+(the\s+)?compan"
+    r"|all\s+the\s+compan"
+    r"|compan(y|ies)\s+in\s+(the\s+)?(database|db|system)",
+    re.IGNORECASE,
+)
+
 HYDE_TRIGGERS = re.compile(
     r"forward.?looking"
     r"|management\s+(commentary|outlook|guidance|discussion)"

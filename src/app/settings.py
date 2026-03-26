@@ -74,6 +74,10 @@ class Settings(BaseSettings):
 
     # ── Agent ──────────────────────────────────────────────────────────────────
     hyde: bool = Field(default=False)
+    doc_agent_model: str = Field(
+        default="claude-haiku-4-5-20251001",
+        description="Model used by the doc agent for tool selection and chunk selection.",
+    )
 
     # ── SEC HTML verification ──────────────────────────────────────────────────
     require_sec_html: bool = Field(default=True)

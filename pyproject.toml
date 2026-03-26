@@ -31,6 +31,7 @@ dependencies = [
     "anthropic>=0.28",
     "langgraph>=0.2",
     "langchain-core>=0.2",
+    "langchain-anthropic>=0.2",
     # Frontend
     "streamlit>=1.35",
     "chainlit>=1.1",

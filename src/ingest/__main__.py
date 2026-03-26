@@ -18,10 +18,14 @@ from pathlib import Path
 # Allow running from the repo root without installing the package
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from src.app.logging import configure_logging
 from src.app.settings import Settings
 
-configure_logging()
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
+    datefmt="%H:%M:%S",
+    stream=sys.stdout,
+)
 logger = logging.getLogger(__name__)
 
 

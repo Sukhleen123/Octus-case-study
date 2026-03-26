@@ -168,42 +168,26 @@ def build_company_map(settings: Any) -> pd.DataFrame:
     return mapping_df
 
 
-_MANUAL_MAPPINGS_PATH = Path("configs/manual_mappings.yaml")
+# Companies whose Octus name doesn't fuzzy-match their SimFin listing well enough
+# (score < 90). Key = exact company_name from data/raw/octus/company_metadata.json.
+_MANUAL_TICKER_OVERRIDES: dict[str, dict] = {
+    "Optimum Communications, Inc.": {"ticker": "OPTU", "status": "confirmed"},
+}
 
 
 def _apply_manual_overrides(mapping_df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Apply manual ticker overrides from configs/manual_mappings.yaml.
-
-    Overrides are keyed by the exact company_name from company_metadata.json.
-    They take precedence over fuzzy-matched results and set status to "confirmed".
-    """
-    if not _MANUAL_MAPPINGS_PATH.exists():
-        return mapping_df
-
-    import yaml
-
-    with _MANUAL_MAPPINGS_PATH.open() as f:
-        config = yaml.safe_load(f) or {}
-
-    overrides = config.get("manual_mappings", {})
-    if not overrides:
-        return mapping_df
-
-    for company_name, override in overrides.items():
+    """Apply manual ticker overrides from _MANUAL_TICKER_OVERRIDES."""
+    for company_name, override in _MANUAL_TICKER_OVERRIDES.items():
         mask = mapping_df["company_name"] == company_name
         if not mask.any():
             logger.warning("Manual override for '%s' — no matching row found", company_name)
             continue
-        ticker = override.get("ticker", "")
-        status = override.get("status", "confirmed")
-        mapping_df.loc[mask, "suggested_ticker"] = ticker
-        mapping_df.loc[mask, "status"] = status
+        mapping_df.loc[mask, "suggested_ticker"] = override.get("ticker", "")
+        mapping_df.loc[mask, "status"] = override.get("status", "confirmed")
         logger.info(
             "Manual override applied: '%s' → ticker=%s, status=%s",
-            company_name, ticker, status,
+            company_name, override.get("ticker"), override.get("status"),
         )
-
     return mapping_df
 
 

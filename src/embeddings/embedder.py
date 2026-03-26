@@ -44,14 +44,14 @@ def get_embedder(settings: "Settings") -> BaseEmbedder:
     Factory: return the appropriate embedder based on settings.embedding_provider.
 
     Providers:
-      "sentence_transformers"— local HuggingFace model (e.g. intfloat/e5-base-v2)
+      "sentence_transformers"— local HuggingFace model (e.g. Alibaba-NLP/gte-ModernBERT-base)
       "openai"               — OpenAI embeddings API
     """
     provider = settings.embedding_provider
 
     if provider == "sentence_transformers":
         from src.embeddings.sentence_transformer_embedder import SentenceTransformerEmbedder
-        model_name = settings.embedding_model or "intfloat/e5-base-v2"
+        model_name = settings.embedding_model or "Alibaba-NLP/gte-ModernBERT-base"
         return SentenceTransformerEmbedder(model_name=model_name)
 
     if provider == "openai":

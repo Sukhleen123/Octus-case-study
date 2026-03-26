@@ -82,6 +82,35 @@ Solution: chunk `text` is stored locally in SQLite (`MetadataStore`) keyed by `c
 
 ---
 
+## Embedding Model
+
+**Model: `Alibaba-NLP/gte-ModernBERT-base`** (default for `sentence_transformers` provider)
+
+| Property | Value |
+|----------|-------|
+| Dimension | 768 |
+| Max sequence length | 8,192 tokens |
+| MTEB score | 64.38 |
+| Task prefixes | Not required |
+| `trust_remote_code` | Not required |
+
+**Why not `intfloat/e5-base-v2`?**
+
+The previous default, `e5-base-v2`, has a 512-token max sequence length. `SECSectionChunker` produces chunks up to 2,048 tokens (hard cap on large ITEM 7 sections). At 512 tokens, the embedding model silently truncates ~75% of those chunks — the input is truncated before the dense forward pass, so the resulting vector represents only the first ~400 words of a section that may be 1,600+ words. This makes long SEC sections unreliable to retrieve: their vectors only capture the opening paragraph.
+
+**Why not use two separate models?**
+
+Transcript and SEC chunks are stored in the same Pinecone index (different namespaces but identical dimension). Pinecone indexes enforce a single dimension. Using two models would require two separate indexes, two Pinecone API keys or index configurations, and query-time routing to select the right model per namespace. The cleaner fix: one model with sufficient context for both document types.
+
+**Why gte-ModernBERT-base?**
+
+- **768-dim** — same as e5-base-v2; no Pinecone index rebuild required
+- **8,192-token context** — comfortably handles the 2,048-token SECSectionChunker cap with 4× headroom
+- **No task prefixes** — E5 models require prepending `"query: "` / `"passage: "` to embed correctly; gte-ModernBERT does not. The existing `_needs_prefix()` in `SentenceTransformerEmbedder` returns False for non-E5 model names, so no code change needed there
+- **MTEB 64.38** vs e5-base-v2 ~62 — modestly stronger on retrieval benchmarks
+
+---
+
 ## Chunking Strategy
 
 | Chunker | Approach | Used for | Strengths | Weaknesses |

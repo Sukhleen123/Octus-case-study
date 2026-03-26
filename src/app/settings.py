@@ -52,7 +52,7 @@ class Settings(BaseSettings):
     # ── Retrieval ──────────────────────────────────────────────────────────────
     retriever_id: Literal["dense", "dense_mmr"] = Field(default="dense")
     mmr_lambda: float = Field(default=0.5)
-    top_k: int = Field(default=5)
+    top_k: int = Field(default=10)
 
     # ── Vectorstore / Pinecone ─────────────────────────────────────────────────
     pinecone_api_key: str = Field(default="")
@@ -73,7 +73,7 @@ class Settings(BaseSettings):
     anthropic_api_key: str = Field(default="")
 
     # ── Agent ──────────────────────────────────────────────────────────────────
-    hyde: bool = Field(default=False)
+    hyde: bool = True
     doc_agent_model: str = Field(
         default="claude-haiku-4-5-20251001",
         description="Model used by the doc agent for tool selection and chunk selection.",

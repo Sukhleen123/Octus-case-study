@@ -111,6 +111,7 @@ def build_company_map(settings: Any) -> pd.DataFrame:
             rows.append({
                 "octus_company_id": r["octus_company_id"],
                 "company_name": r["company_name"],
+                "sub_industry": r.get("sub_industry", ""),
                 "suggested_ticker": "",
                 "suggested_simfin_id": None,
                 "match_score": 0.0,
@@ -153,6 +154,7 @@ def build_company_map(settings: Any) -> pd.DataFrame:
             rows.append({
                 "octus_company_id": r["octus_company_id"],
                 "company_name": r["company_name"],
+                "sub_industry": r.get("sub_industry", ""),
                 "suggested_ticker": ticker,
                 "suggested_simfin_id": None,
                 "match_score": float(score),
@@ -172,6 +174,8 @@ def build_company_map(settings: Any) -> pd.DataFrame:
 # (score < 90). Key = exact company_name from data/raw/octus/company_metadata.json.
 _MANUAL_TICKER_OVERRIDES: dict[str, dict] = {
     "Optimum Communications, Inc.": {"ticker": "OPTU", "status": "confirmed"},
+    "Dave & Buster's": {"ticker": "PLAY", "status": "confirmed"},
+    
 }
 
 

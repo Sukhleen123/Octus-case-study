@@ -34,6 +34,17 @@ class AgentState(BaseModel):
     doc_filters: dict = Field(default_factory=dict)
     doc_query: str = ""
     all_companies_mode: bool = False
+    sector_mode: bool = False          # True when companies came from sector keyword expansion
+
+    # Doc agent temporal filters (Pinecone date range)
+    doc_date_from: str = ""          # ISO date string e.g. "2023-01-01", "" = no filter
+    doc_date_to: str = ""            # ISO date string e.g. "2025-12-31", "" = no filter
+
+    # SimFin temporal filters (DuckDB SQL-level)
+    simfin_date_from: str = ""                 # year string e.g. "2024", "" = no filter
+    simfin_max_quarterly_periods: int = 0      # SQL LIMIT on quarterly tables (0 = no limit)
+    simfin_max_annual_periods: int = 0         # SQL LIMIT on annual tables (0 = no limit)
+    simfin_tables: list[str] = Field(default_factory=list)  # empty = use all TABLES
 
     # ── Set by doc_agent_node ─────────────────────────────────────────────────
     doc_result: tuple = Field(default=([], [], []))

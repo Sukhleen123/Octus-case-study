@@ -33,6 +33,15 @@ ALL_COMPANIES_TRIGGERS = re.compile(
     re.IGNORECASE,
 )
 
+SECTOR_TRIGGERS = re.compile(
+    r"\bsector\b"
+    r"|\bindustr(y|ies)\b"
+    r"|\bacross\s+(all\s+)?(companies|the\s+\w+\s+compan)"
+    r"|\bcommon\s+(trends?|risks?|themes?)\b"
+    r"|\bcompare\b",
+    re.IGNORECASE,
+)
+
 HYDE_TRIGGERS = re.compile(
     r"forward.?looking"
     r"|management\s+(commentary|outlook|guidance|discussion)"

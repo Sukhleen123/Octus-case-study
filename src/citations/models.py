@@ -20,7 +20,8 @@ class OctusCitation:
     document_type: str      # "Transcript" | "10-K" | "10-Q"
     document_date: str      # ISO format datetime string
     chunk_id: str
-    cited_text: str = ""    # excerpt from the chunk that supports the claim (≤300 chars)
+    cited_text: str = ""    # full text of the retrieved chunk
+    company_name: str = ""  # company the chunk belongs to
     ref_number: int = 0     # inline [N] ref assigned by synthesis agent (0 = uncited)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,6 +33,7 @@ class OctusCitation:
             "document_date": self.document_date,
             "chunk_id": self.chunk_id,
             "cited_text": self.cited_text,
+            "company_name": self.company_name,
             "ref_number": self.ref_number,
         }
 

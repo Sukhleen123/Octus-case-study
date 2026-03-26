@@ -44,8 +44,14 @@ METRIC_COLS: dict[str, list[str]] = {
 }
 
 
-def fetch_ticker(ticker: str) -> tuple[pd.DataFrame, list[SimFinCitation]]:
-    """Read financial data for one ticker from DuckDB."""
+def fetch_ticker(
+    ticker: str,
+    max_quarterly_periods: int = 0,
+    max_annual_periods: int = 0,
+    fiscal_year_from: int = 0,
+    tables_to_query: list[str] | None = None,
+) -> tuple[pd.DataFrame, list[SimFinCitation]]:
+    """Read financial data for one ticker from DuckDB with optional period/year filtering."""
     duckdb_path = Path(runtime.settings.duckdb_path)
 
     if not duckdb_path.exists():
@@ -57,12 +63,31 @@ def fetch_ticker(ticker: str) -> tuple[pd.DataFrame, list[SimFinCitation]]:
 
         con = duckdb.connect(str(duckdb_path), read_only=True)
         dfs: list[pd.DataFrame] = []
-        for table_name in TABLES:
+        effective_tables = tables_to_query if tables_to_query else list(TABLES)
+        for table_name in effective_tables:
             try:
-                df = con.execute(
-                    f'SELECT * FROM {table_name} WHERE upper("Ticker") = upper(?)',
-                    [ticker],
-                ).df()
+                is_quarterly = "quarterly" in table_name
+                is_annual = "annual" in table_name
+
+                limit = None
+                if is_quarterly and max_quarterly_periods > 0:
+                    limit = max_quarterly_periods
+                elif is_annual and max_annual_periods > 0:
+                    limit = max_annual_periods
+
+                sql = f'SELECT * FROM {table_name} WHERE upper("Ticker") = upper(?)'
+                params: list = [ticker]
+
+                if fiscal_year_from > 0:
+                    sql += ' AND "Fiscal Year" >= ?'
+                    params.append(fiscal_year_from)
+
+                sql += ' ORDER BY "Fiscal Year" DESC'
+
+                if limit:
+                    sql += f" LIMIT {limit}"
+
+                df = con.execute(sql, params).df()
                 if not df.empty:
                     df["_statement_type"] = table_name
                     dfs.append(df)
@@ -145,30 +170,48 @@ def simfin_agent_node(state: AgentState) -> dict:
     """
     events = []
     events.append(agent_start(NAME, query=state.query, tickers=state.tickers))
-    events.append(tool_call_start(NAME, tool="simfin", tickers=state.tickers))
 
     tables: list[pd.DataFrame] = []
     citations: list[SimFinCitation] = []
 
     if not state.tickers:
         logger.info("SimFinAgent: no tickers to look up")
-        events.append(tool_call_end(NAME, tool="simfin", status="no_tickers"))
         events.append(agent_end(NAME, status="no_tickers"))
         return {
             "simfin_result": (tables, citations, events),
             "trace_events": [e.to_dict() for e in events],
         }
 
+    fiscal_year_from = int(state.simfin_date_from[:4]) if state.simfin_date_from else 0
+    tables_to_query = state.simfin_tables if state.simfin_tables else None
+
     for ticker in state.tickers:
+        events.append(tool_call_start(NAME, tool="duckdb", ticker=ticker))
         try:
-            df, cites = fetch_ticker(ticker)
+            df, cites = fetch_ticker(
+                ticker,
+                max_quarterly_periods=state.simfin_max_quarterly_periods,
+                max_annual_periods=state.simfin_max_annual_periods,
+                fiscal_year_from=fiscal_year_from,
+                tables_to_query=tables_to_query,
+            )
             if not df.empty:
                 tables.append(df)
                 citations.extend(cites)
+                tables_fetched = sorted(df["_statement_type"].unique().tolist())
+                row_count = len(df)
+            else:
+                tables_fetched = []
+                row_count = 0
         except Exception as e:
             logger.warning("SimFinAgent: failed to fetch %s: %s", ticker, e)
+            tables_fetched = []
+            row_count = 0
+        events.append(tool_call_end(
+            NAME, tool="duckdb", ticker=ticker,
+            row_count=row_count, tables_fetched=tables_fetched,
+        ))
 
-    events.append(tool_call_end(NAME, tool="simfin", tables=len(tables)))
     events.append(simfin_results(NAME, count=len(citations), rows=[c.to_dict() for c in citations]))
     events.append(citations_emitted(NAME, count=len(citations)))
     events.append(agent_end(NAME, table_count=len(tables)))

@@ -73,8 +73,18 @@ def llm_answer(
     context: str,
     llm_client: Any,
     model: str,
+    all_companies: list[str] | None = None,
 ) -> tuple[str, set[int]]:
     """Call Claude with numbered citations; return (answer_text, used_ref_numbers)."""
+    companies_note = ""
+    if all_companies:
+        companies_note = (
+            "IMPORTANT: The following companies are in the database. "
+            "For any company that has no sources listed below, include it in your answer "
+            "with a note that no data is available for that company:\n"
+            + ", ".join(all_companies) + "\n\n"
+        )
+
     prompt = (
         "Answer the following question using only the numbered sources below.\n"
         "Rules for citing evidence:\n"
@@ -88,15 +98,17 @@ def llm_answer(
         "paragraph formatted as a markdown block quote (lines starting with '> '), "
         "with the [N] reference at the end of the block.\n"
         "4. If multiple sources support one claim, cite together: [1][2].\n\n"
-        f"Question: {query}\n\n"
+        + companies_note
+        + f"Question: {query}\n\n"
         f"Sources:\n{context}\n\n"
         "Answer:"
     )
 
+    max_tokens = 4000 if all_companies else 2000
     if hasattr(llm_client, "messages"):
         response = llm_client.messages.create(
             model=model,
-            max_tokens=2000,
+            max_tokens=max_tokens,
             messages=[{"role": "user", "content": prompt}],
         )
         answer_text = response.content[0].text
@@ -116,13 +128,16 @@ def synthesize_node(state: AgentState) -> dict:
     chunks, octus_cites, doc_events = state.doc_result
     tables, simfin_cites, sf_events = state.simfin_result
 
-    all_events = list(doc_events) + list(sf_events)
-    all_events.append(agent_start(NAME, query=state.query))
+    prior_events = list(doc_events) + list(sf_events)
+    synth_start = agent_start(NAME, query=state.query)
+    all_events = prior_events + [synth_start]
 
     if runtime.llm_client is not None:
         ordered, context = build_context(octus_cites, simfin_cites)
+        all_companies = state.companies if state.all_companies_mode else None
         answer, used_refs = llm_answer(
-            state.query, ordered, context, runtime.llm_client, runtime.settings.llm_model
+            state.query, ordered, context, runtime.llm_client, runtime.settings.llm_model,
+            all_companies=all_companies,
         )
         for ref, cit in enumerate(ordered, 1):
             if ref in used_refs:
@@ -134,8 +149,12 @@ def synthesize_node(state: AgentState) -> dict:
         answer = mock_answer(state.query, chunks, tables)
         all_citations = list(simfin_cites) + list(octus_cites)
 
-    all_events.append(citations_emitted(NAME, count=len(all_citations)))
-    all_events.append(agent_end(NAME))
+    synth_events = [
+        synth_start,
+        citations_emitted(NAME, count=len(all_citations)),
+        agent_end(NAME),
+    ]
+    all_events.extend(synth_events)
 
     output = SynthesisOutput(
         final_answer_text=answer,
@@ -145,6 +164,9 @@ def synthesize_node(state: AgentState) -> dict:
 
     return {
         "synthesis_result": output,
-        "trace_events": [e.to_dict() for e in all_events],
+        # Only emit synthesis-specific events — doc/simfin events were already
+        # rendered when those nodes completed; re-emitting them here would duplicate
+        # every trace line in the UI.
+        "trace_events": [e.to_dict() for e in synth_events],
         "messages": [AIMessage(content=answer)],
     }

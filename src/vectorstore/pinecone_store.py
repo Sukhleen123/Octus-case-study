@@ -151,6 +151,15 @@ class PineconeStore:
 
         return results
 
+    def clear(self) -> None:
+        """Delete all vectors in this namespace and clear the local text store."""
+        try:
+            self._index.delete_namespace(namespace=self._namespace)
+            logger.info("Cleared Pinecone namespace '%s'", self._namespace)
+        except Exception as e:
+            logger.warning("Could not clear Pinecone namespace '%s': %s", self._namespace, e)
+        self._text_store.clear()
+
     def count(self) -> int:
         stats = self._index.describe_index_stats()
         ns_stats = stats.namespaces.get(self._namespace)
@@ -185,5 +194,14 @@ def _flatten_metadata(meta: dict[str, Any]) -> dict[str, Any]:
 
 
 def _to_pinecone_filter(filters: dict[str, Any]) -> dict[str, Any]:
-    """Convert simple {field: value} filter to Pinecone filter syntax."""
-    return {k: {"$eq": v} for k, v in filters.items()}
+    """Convert simple {field: value} filter to Pinecone filter syntax.
+
+    Lists use $in (multiple allowed values); scalars use $eq.
+    """
+    result = {}
+    for k, v in filters.items():
+        if isinstance(v, list):
+            result[k] = {"$in": v}
+        else:
+            result[k] = {"$eq": v}
+    return result

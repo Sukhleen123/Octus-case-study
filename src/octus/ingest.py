@@ -187,9 +187,9 @@ def run_ingestion(settings: Settings) -> pd.DataFrame:
 
     Returns the documents DataFrame.
     """
-    raw_dir = settings.octus_raw_path
+    raw_dir = Path(settings.octus_raw_dir)
     sec_html_dir = raw_dir / "sec_html"
-    out_dir = settings.octus_processed_path
+    out_dir = Path(settings.octus_processed_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     fmt = settings.table_format
 

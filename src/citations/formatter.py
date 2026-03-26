@@ -7,6 +7,20 @@ from collections import defaultdict
 from src.citations.models import OctusCitation, SimFinCitation
 
 
+def format_citations_from_dicts(citations: list[dict]) -> str:
+    """
+    Format a list of serialized citation dicts (from SynthesisOutput.citations)
+    by reconstructing them into typed objects and delegating to format_citations_block.
+    """
+    objects = []
+    for d in citations:
+        if "ticker" in d:
+            objects.append(SimFinCitation(**{k: v for k, v in d.items() if k != "type"}))
+        else:
+            objects.append(OctusCitation(**{k: v for k, v in d.items() if k != "type"}))
+    return format_citations_block(objects)
+
+
 def format_citation(citation: OctusCitation | SimFinCitation) -> str:
     """Return a human-readable citation string with [N] prefix and supporting evidence."""
     if isinstance(citation, OctusCitation):

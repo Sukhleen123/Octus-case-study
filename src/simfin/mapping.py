@@ -20,7 +20,7 @@ from typing import Any
 
 import pandas as pd
 
-from src.simfin.storage import read_table, write_table
+from src.simfin.storage import write_table
 
 logger = logging.getLogger(__name__)
 
@@ -90,11 +90,7 @@ def build_company_map(settings: Any) -> pd.DataFrame:
     from rapidfuzz import fuzz, process
 
     raw_dir = Path(settings.octus_raw_dir)
-    out_dir = Path(
-        settings.simfin_processed_path
-        if hasattr(settings, "simfin_processed_path")
-        else Path(settings.processed_dir) / "simfin"
-    )
+    out_dir = Path(settings.simfin_processed_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     fmt = settings.table_format
 
@@ -115,6 +111,7 @@ def build_company_map(settings: Any) -> pd.DataFrame:
             rows.append({
                 "octus_company_id": r["octus_company_id"],
                 "company_name": r["company_name"],
+                "sub_industry": r.get("sub_industry", ""),
                 "suggested_ticker": "",
                 "suggested_simfin_id": None,
                 "match_score": 0.0,
@@ -157,6 +154,7 @@ def build_company_map(settings: Any) -> pd.DataFrame:
             rows.append({
                 "octus_company_id": r["octus_company_id"],
                 "company_name": r["company_name"],
+                "sub_industry": r.get("sub_industry", ""),
                 "suggested_ticker": ticker,
                 "suggested_simfin_id": None,
                 "match_score": float(score),
@@ -165,9 +163,35 @@ def build_company_map(settings: Any) -> pd.DataFrame:
             })
 
     mapping_df = pd.DataFrame(rows)
+    mapping_df = _apply_manual_overrides(mapping_df)
     out_path = out_dir / f"company_map.{fmt}"
     write_table(mapping_df, out_path, fmt)
     logger.info("Company map written to %s (%d rows)", out_path, len(mapping_df))
+    return mapping_df
+
+
+# Companies whose Octus name doesn't fuzzy-match their SimFin listing well enough
+# (score < 90). Key = exact company_name from data/raw/octus/company_metadata.json.
+_MANUAL_TICKER_OVERRIDES: dict[str, dict] = {
+    "Optimum Communications, Inc.": {"ticker": "OPTU", "status": "confirmed"},
+    "Dave & Buster's": {"ticker": "PLAY", "status": "confirmed"},
+    
+}
+
+
+def _apply_manual_overrides(mapping_df: pd.DataFrame) -> pd.DataFrame:
+    """Apply manual ticker overrides from _MANUAL_TICKER_OVERRIDES."""
+    for company_name, override in _MANUAL_TICKER_OVERRIDES.items():
+        mask = mapping_df["company_name"] == company_name
+        if not mask.any():
+            logger.warning("Manual override for '%s' — no matching row found", company_name)
+            continue
+        mapping_df.loc[mask, "suggested_ticker"] = override.get("ticker", "")
+        mapping_df.loc[mask, "status"] = override.get("status", "confirmed")
+        logger.info(
+            "Manual override applied: '%s' → ticker=%s, status=%s",
+            company_name, override.get("ticker"), override.get("status"),
+        )
     return mapping_df
 
 

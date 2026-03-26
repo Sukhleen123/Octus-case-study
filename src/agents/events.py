@@ -20,6 +20,7 @@ class EventType(str, Enum):
     TOOL_CALL_END = "tool_call_end"
     RETRIEVAL_RESULTS = "retrieval_results"
     CITATIONS_EMITTED = "citations_emitted"
+    SIMFIN_RESULTS = "simfin_results"
 
 
 @dataclass
@@ -61,3 +62,7 @@ def retrieval_results(agent_name: str, count: int, **kwargs) -> TraceEvent:
 
 def citations_emitted(agent_name: str, count: int, **kwargs) -> TraceEvent:
     return TraceEvent(EventType.CITATIONS_EMITTED, agent_name, payload={"count": count, **kwargs})
+
+
+def simfin_results(agent_name: str, count: int, **kwargs) -> TraceEvent:
+    return TraceEvent(EventType.SIMFIN_RESULTS, agent_name, payload={"count": count, **kwargs})

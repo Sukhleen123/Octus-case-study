@@ -120,6 +120,29 @@ class SimFinV3Client:
             params["fyear"] = year
         return self._get("/api/v3/companies/statements", params=params)
 
+    def get_verbose_statements(
+        self,
+        ticker: str,
+        statements: str = "PL,BS,CF",
+    ) -> Any:
+        """
+        Retrieve verbose financial statements for a ticker (all periods, all metrics).
+        Endpoint: GET /api/v3/companies/statements/verbose
+
+        Args:
+            ticker: Company ticker symbol.
+            statements: Comma-separated statement codes, e.g. "PL,BS,CF".
+
+        Returns:
+            List containing one company object with nested statement data:
+            [{"ticker": ..., "name": ..., "id": ..., "statements": [...]}]
+        """
+        params: dict[str, Any] = {
+            "ticker": ticker,
+            "statements": statements,
+        }
+        return self._get("/api/v3/companies/statements/verbose", params=params)
+
     def close(self) -> None:
         self._client.close()
         self._cache.close()
